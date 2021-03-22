@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import axios from "axios";
+import React from "react"
+import SingleData from "./SingleData";
+import "./user.css"
+import UserList from "./UserList";
+class App extends React.Component{
+
+state={
+  user:[],
+  selectData:{
+    name:"david",
+    email:"er.daviddabali@gmail.com"
+
+  }
+}
+
+componentDidMount(){
+ axios.get("https://jsonplaceholder.typicode.com/users").then((res)=>{
+       this.state.user=res.data
+       this.setState(this.state)
+ })
+
+}
+
+callback(dynamic){
+  
+  this.state.selectData=dynamic
+  this.setState(this.state)
+
+}
+
+  render(){
+    return(
+      <>
+            <div className="left">
+              <UserList  userData={this.state.user} 
+               handler={this.callback.bind(this)}
+              
+              />
+            </div>
+
+            <div className="right">
+               <SingleData name={this.state.selectData.name} email={this.state.selectData.email} 
+              
+               header="UserDetail is below:"/>
+            </div>
+            </> 
+    )
+  }
 }
 
 export default App;
