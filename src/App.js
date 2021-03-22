@@ -9,8 +9,8 @@ class App extends React.Component{
 state={
   user:[],
   selectData:{
-    name:"david",
-    email:"er.daviddabali@gmail.com"
+  
+    address:{}
 
   }
 }
@@ -41,8 +41,9 @@ callback(dynamic){
             </div>
 
             <div className="right">
-               <SingleData name={this.state.selectData.name} email={this.state.selectData.email} 
-              
+               <SingleData name={this.state.selectData.name} 
+               email={this.state.selectData.email } 
+               address={this.state.selectData.address.city}
                header="UserDetail is below:"/>
             </div>
             </> 

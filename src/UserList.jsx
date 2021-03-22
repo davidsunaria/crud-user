@@ -12,9 +12,9 @@ getData(){
 
     return this.props.userData.map((singleUser)=>{
 
-        let UserTag=<SingleData name={singleUser.name}
+        let UserTag=<SingleData name={singleUser.name}  
        
-          handler={this.props.handler}  key={singleUser.id} border="2px solid red"/>
+          handler={this.props.handler}  key={singleUser.id} border="2px solid red" data={singleUser}/>
         return UserTag
  
    })
