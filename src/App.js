@@ -4,6 +4,7 @@ import React from "react"
 import SingleData from "./SingleData";
 import "./user.css"
 import UserList from "./UserList";
+import {UserContext} from "./ContextApi"
 class App extends React.Component{
 
 state={
@@ -32,21 +33,19 @@ callback(dynamic){
 
   render(){
     return(
-      <>
+      <UserContext.Provider value={{handler:this.callback.bind(this)}}>
             <div className="left">
               <UserList  userData={this.state.user} 
-               handler={this.callback.bind(this)}
+               
               
               />
             </div>
 
             <div className="right">
-               <SingleData name={this.state.selectData.name} 
-               email={this.state.selectData.email } 
-               address={this.state.selectData.address.city}
+               <SingleData selectedUser={this.state.selectData}
                header="UserDetail is below:"/>
             </div>
-            </> 
+            </UserContext.Provider> 
     )
   }
 }

@@ -5,7 +5,7 @@ class Name extends  React.Component{
 
     render(){
         return(
-            <h1>{this.props.singleName}</h1>
+            <h1 style={{background:"red"}}>{this.props.singleName}</h1>
         )
     }
 }
