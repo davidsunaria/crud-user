@@ -1,58 +1,48 @@
 import React from "react"
 import Name from "./Name"
-import {UserContext} from "./ContextApi"
+import { UserContext } from "./ContextApi"
 
 
-class SingleData  extends React.Component{
+class SingleData extends React.Component {
 
-     selectfunc(){
-         if(this.props.handler!==undefined){
-            this.props.handler(this.props.data)
-            console.log(this.props)
-         }
-     }
-
-     getuserDetail(){
-         
-     }
-
-    render(){
-        let  finalValue= null
-        if(this.props.select!==undefined){
-            finalValue=  <Name singleName={this.props.data[this.props.select]}/>
+    selectfunc(contextData) {
+        if(this.props.data !==undefined){
+            contextData.handler(this.props.data)
         }
+    }
 
-        else{
-      finalValue= 
+    getUserDetail() {
+
+    }
+
+    render() {
+        let finalValue = null
        
-         
-         <UserContext.Consumer>{(contextData)=>{ 
-          return  <>
-            <h1>{this.props.header}</h1>
-             <Name singleName={contextData.selectedUser.name}/>
-            <h2>{contextData.selectedUser.email}</h2>
-            <h2>{contextData.selectedUser.address.city}</h2>
-            </>
-        }}</UserContext.Consumer>
-            
-            
-
-        }
-        return(
+        return (
             <UserContext.Consumer>{
-                
-                (contextData)=>{
 
-                   return  <div style={{border:this.props.border}} onClick={()=>{contextData.handler(this.props.data)}}>
-                   {finalValue}
-                   </div>
+                (contextData) => {
+                    if (this.props.select !== undefined) {
+                        finalValue = <Name singleName={this.props.data[this.props.select]} />
+                    } else {
+                        finalValue = <>
+                                <h1>{this.props.header}</h1>
+                                <Name singleName={contextData.selectedUser.name} />
+                                <h2>{contextData.selectedUser.email}</h2>
+                                <h2>{contextData.selectedUser.address.city}</h2>
+                            </>
+                    
+                    }
+                    return <div style={{ border: this.props.border }} onClick={this.selectfunc.bind(this,contextData )}>
+                        {finalValue}
+                    </div>
 
                 }
-                
-                
-                }
-           
-          </UserContext.Consumer>
+
+
+            }
+
+            </UserContext.Consumer>
         )
     }
 }

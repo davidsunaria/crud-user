@@ -42,8 +42,7 @@ callback(dynamic){
             </div>
 
             <div className="right">
-               <SingleData 
-               header="UserDetail is below:"/>
+               <SingleData header="UserDetail is below:"/>
             </div>
             </UserContext.Provider> 
     )
