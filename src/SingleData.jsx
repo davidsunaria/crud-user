@@ -12,6 +12,10 @@ class SingleData  extends React.Component{
          }
      }
 
+     getuserDetail(){
+         
+     }
+
     render(){
         let  finalValue= null
         if(this.props.select!==undefined){
@@ -19,12 +23,19 @@ class SingleData  extends React.Component{
         }
 
         else{
-      finalValue=  <>
+      finalValue= 
+       
+         
+         <UserContext.Consumer>{(contextData)=>{ 
+          return  <>
             <h1>{this.props.header}</h1>
-             <Name singleName={this.props.selectedUser.name}/>
-            <h2>{this.props.selectedUser.email}</h2>
-            <h2>{this.props.selectedUser.address.city}</h2>
+             <Name singleName={contextData.selectedUser.name}/>
+            <h2>{contextData.selectedUser.email}</h2>
+            <h2>{contextData.selectedUser.address.city}</h2>
             </>
+        }}</UserContext.Consumer>
+            
+            
 
         }
         return(

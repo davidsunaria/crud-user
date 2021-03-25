@@ -33,7 +33,7 @@ callback(dynamic){
 
   render(){
     return(
-      <UserContext.Provider value={{handler:this.callback.bind(this)}}>
+      <UserContext.Provider value={{handler:this.callback.bind(this),selectedUser:this.state.selectData}}>
             <div className="left">
               <UserList  userData={this.state.user} 
                
@@ -42,7 +42,7 @@ callback(dynamic){
             </div>
 
             <div className="right">
-               <SingleData selectedUser={this.state.selectData}
+               <SingleData 
                header="UserDetail is below:"/>
             </div>
             </UserContext.Provider> 
