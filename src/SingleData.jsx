@@ -23,8 +23,8 @@ class SingleData extends React.Component {
 
             finalValue =  <div className="card" >
             <div className="card-body">
-                <h5 className="card-title">{this.props.header}</h5>
-                <h6 className="card-subtitle mb-2 text-muted">{this.context.selectedUser.name}</h6>
+                <h3 className="card-title">{this.props.header}</h3>
+                <h4 className="card-subtitle mb-2 text-muted">{this.context.selectedUser.name}</h4>
                 <p className="card-text">{this.context.selectedUser.address.street} {this.context.selectedUser.address.suite} { this.context.selectedUser.address.city }</p>
                 <a href="#" className="card-link">{this.context.selectedUser.phone}</a>
                 <a href="#" className="card-link">{this.context.selectedUser.email}</a>

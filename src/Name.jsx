@@ -4,7 +4,7 @@ class Name extends  React.Component{
     
     render(){
         return(
-            <a className="list-group-item list-group-item-action">{this.props.singleName}</a>
+            <h3 className="list-group-item list-group-item-action">{this.props.singleName}</h3>
         )
     }
 }
