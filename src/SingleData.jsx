@@ -19,12 +19,17 @@ class SingleData extends React.Component {
         if (this.props.select !== undefined) {
             finalValue = <Name singleName={this.props.data[this.props.select]} />
         } else {
-            finalValue = <>
-                    <h1>{this.props.header}</h1>
-                    <Name singleName={this.context.selectedUser.name} />
-                    <h2>{this.context.selectedUser.email}</h2>
-                    <h2>{this.context.selectedUser.address.city}</h2>
-                </>
+           
+
+            finalValue =  <div className="card" >
+            <div className="card-body">
+                <h5 className="card-title">{this.props.header}</h5>
+                <h6 className="card-subtitle mb-2 text-muted">{this.context.selectedUser.name}</h6>
+                <p className="card-text">{this.context.selectedUser.address.street} {this.context.selectedUser.address.suite} { this.context.selectedUser.address.city }</p>
+                <a href="#" className="card-link">{this.context.selectedUser.phone}</a>
+                <a href="#" className="card-link">{this.context.selectedUser.email}</a>
+            </div>
+            </div>
         
         }
         return (
