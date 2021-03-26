@@ -4,39 +4,33 @@ import { UserContext } from "./ContextApi"
 
 
 class SingleData extends React.Component {
+    static contextType = UserContext;
 
-    selectfunc(contextData) {
+    selectFunc() {
         if(this.props.data !==undefined){
-            contextData.handler(this.props.data)
+            this.context.handler(this.props.data)
         }
     }
 
     render() {
+        
         let finalValue = null
        
+        if (this.props.select !== undefined) {
+            finalValue = <Name singleName={this.props.data[this.props.select]} />
+        } else {
+            finalValue = <>
+                    <h1>{this.props.header}</h1>
+                    <Name singleName={this.context.selectedUser.name} />
+                    <h2>{this.context.selectedUser.email}</h2>
+                    <h2>{this.context.selectedUser.address.city}</h2>
+                </>
+        
+        }
         return (
-            <UserContext.Consumer>{
-
-                (contextData) => {
-                    if (this.props.select !== undefined) {
-                        finalValue = <Name singleName={this.props.data[this.props.select]} />
-                    } else {
-                        finalValue = <>
-                                <h1>{this.props.header}</h1>
-                                <Name singleName={contextData.selectedUser.name} />
-                                <h2>{contextData.selectedUser.email}</h2>
-                                <h2>{contextData.selectedUser.address.city}</h2>
-                            </>
-                    
-                    }
-                    return <div style={{ border: this.props.border }} onClick={this.selectfunc.bind(this,contextData )}>
-                        {finalValue}
-                    </div>
-
-                }
-            }
-
-            </UserContext.Consumer>
+            <div style={{ border: this.props.border }} onClick={this.selectFunc.bind(this )}>
+                {finalValue}
+            </div>  
         )
     }
 }
