@@ -11,10 +11,6 @@ class SingleData extends React.Component {
         }
     }
 
-    getUserDetail() {
-
-    }
-
     render() {
         let finalValue = null
        
@@ -38,8 +34,6 @@ class SingleData extends React.Component {
                     </div>
 
                 }
-
-
             }
 
             </UserContext.Consumer>
